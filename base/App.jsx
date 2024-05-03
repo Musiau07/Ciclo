@@ -1,28 +1,11 @@
-// //import Home from '../base/src/components/exemplos/atividade_IMC/Index';
-// //import ScrollHorizontal from './src/components/exemplos/scrollhorizontal/Index';
-// //import { StyleSheet } from 'react-native';
-// //import LoginScreen from './src/telas/cadastro/Cadastro';
-// import {NavigationContainer} from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
 
-// import Cadastrar from "./src/components/exemplos/cadastro/Cadastro";
-// import Cadastro from "./src/telas/Cadastro/Cadastro"
-// import LoginPage from "./src/telas/Cadastro/Cadastro";
-// import Homes from './src/components/exemplos/Home/HomeStart';
-
-// import Formulario from './src/telas/Formulario/Formulario';
-
-// import Menu from './src/telas/Menu/Menu';
-// import Calendario from './src/telas/Calendario/Calendario';
-// import Home from './src/components/home';
-// import Contato from './src/components/exemplos/contato/Contato';
-// import Autocuidados from './src/telas/Autocuidados/Autocuidados';
-
-
-
-import React from "react";
+ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+// import Autocuidado from "./src/telas/Autocuidado/Autocuidado";
+ import Login from "./src/components/Login";
+import Cursos from "./src/components/Cursos";
+import Cadastro from "./src/components/Cadastro";
 // import Cadastro from './src/telas/Cadastro/Cadastro';
 // import Formulario from './src/telas/Autocuidado/Autocuidado';
 // import Calendario from './src/telas/Calendario/Calendario';
@@ -36,13 +19,13 @@ const Stack = createStackNavigator();
 
 export default function App(){
     return(
-        // <LoginScreen/>
+          //<Autocuidado/>
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeStart}/>
-            <Stack.Screen name="Cadastrar" component={Cadastrar}/>
-            <Stack.Screen name="Listar" component={Listar}/>
-            </Stack.Navigator>
+            <Stack.Navigator initialRouteName="Login">
+              <Stack.Screen name="Login" component={Login}/>
+              <Stack.Screen name="Cursos" component={Cursos}/>
+              <Stack.Screen name="Cadastro" component={Cadastro}/>
+         </Stack.Navigator>
         </NavigationContainer>
     )
 };

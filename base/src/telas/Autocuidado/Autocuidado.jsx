@@ -15,6 +15,13 @@ const Autocuidado = () => {
         <Image source={require('../../../res/img/cuidados4.png')} style={styles.logo} />
         
       </View>
+
+      {/* <nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link active" href="#">Active</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link disabled" href="#">Disabled</a>
+</nav> */}
     </ImageBackground>
   );
 };

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = require("./routers")
-const client = require("../config/db");
+const user = require("../config/db");
 const cors = require("cors");
 
 const app = express();
@@ -25,11 +25,11 @@ app.use((req, res, next) => {
     next();
 });
 
-client.query("select 1").then(() => {
+user.query("select 1").then(() => {
     console.log("connection sucess")
     app.listen(8085, function () {
-        console.log("servidor esta rodando na URL: http://localhost:8085")
+        console.log("Servidor rodando na URL: http://localhost:8085")
     });
 })
-    .catch(erro => console.log("connection failed \n" + erro));
+.catch(erro => console.log("connection failed \n" + erro));
 

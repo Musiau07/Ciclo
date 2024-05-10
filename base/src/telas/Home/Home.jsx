@@ -20,7 +20,7 @@ const Home = () => {
         <Text style={styles.buttonText} >Cadastrar</Text>
       </TouchableOpacity>
       </View>
-    </ImageBackground >
+    </ImageBackground>
     
   );
 };

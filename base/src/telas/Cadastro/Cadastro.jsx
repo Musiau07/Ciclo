@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import styles from './Styles';
-import img from './../../../res/img/background.jpg';
 
 
 const Cadastro = () => {

@@ -74,6 +74,7 @@ const userController = {
             res.status(500).json({ msg: "ocorreu um erro durante o registro do usuario" })
         }
     },
+
     login: async (req, res) => {
         const { email, senha } = req.body;
 
@@ -81,10 +82,10 @@ const userController = {
             const sql = await clientController.validateLogin(email, senha);
 
             if (sql.length > 0) {
-                res.status(200).json({ msg: "Email e senha validados com sucesso!" })
+                res.status(200).json({ msg: "email e senha validados com sucesso!" })
             }
             else {
-                res.status(401).json({ msg: "Email ou senha incorretos" });
+                res.status(401).json({ msg: "email ou senha incorretos" });
             }
         }
         catch (error) {
@@ -92,7 +93,6 @@ const userController = {
                 res.status(500).json(error);
             }
         }
-
     }
 };
 

@@ -1,24 +1,32 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import styles from './Styles';
-import img from '../../../res/img/';
+import img from '../../../res/img/background.jpg';
 import { Button } from '@rneui/base';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <ImageBackground source={img} style={styles.container}>
       <View style={styles.content}>
         <Image source={require('../../../res/img/logo.png')} style={styles.logo} /> 
 
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} >Login</Text>
-
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} >Cadastrar</Text>
-      </TouchableOpacity>
+        <Text style={styles.title}></Text>
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Cadastro"
+                    onPress={() => navigation.navigate('Cadastro')}
+                    color='#FFB6C1'
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Login"
+                    onPress={() => navigation.navigate('Login')}
+                    color='#FFB6C1'
+                />
+            </View>
       </View>
     </ImageBackground >
     

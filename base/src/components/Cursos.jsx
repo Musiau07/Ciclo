@@ -1,26 +1,27 @@
 import React from "react";
-import  {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Cursos = ({navigation })=>{
+const Cursos = ({navigation})=>{
     const cursos =[
-        'agronomia',
-        'medicina',
-        'medicina veterinaria',
-        'tecnologia da informação'
+    'Agronomia',
+    'Medicina',
+    'Medicina Veterinária',
+    'Tecnologia da Informação'
     ];
+
     return(
         <View style={styles.container}>
-            <Text style={styles.title}>Cursos Disponiveis</Text>
+            <Text style={styles.title}>Cursos Disponíveis</Text>
             {cursos.map((curso,index)=>(
                 <Text key={index} style={styles.cursoItem}>
                     {curso}
                 </Text>
             ))}
-            {/*botão para voltar para pagina de login*/}
-            <TouchableOpacity>
-                style={styles.voltarbutton}
-                onPress={()=> navigation.navigate('Login')}
-                
+            {/*botão para voltar para o login*/}
+            <TouchableOpacity
+            style={styles.voltarbutton}
+            onPress={()=> navigation.navigate('Login')}
+            >
                 <Text style={styles.voltarbuttontext}>Voltar para o Login</Text>
             </TouchableOpacity>
         </View>

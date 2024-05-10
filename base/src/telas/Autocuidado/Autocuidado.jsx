@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import styles from './Styles';
-import img from './../../../res/img/background.jpg';
+import img from '../../../res/img/background.jpg';
 
 
 const Autocuidado = () => {
@@ -16,12 +16,7 @@ const Autocuidado = () => {
         
       </View>
 
-      {/* <nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link active" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link disabled" href="#">Disabled</a>
-</nav> */}
+      
     </ImageBackground>
   );
 };

@@ -1,6 +1,6 @@
 const { json } = require("express");
 const userController = require("../model/model");
-const userController = {
+const Controller = {
 
     // route root
     getRoot: async (req, res) => {
@@ -36,18 +36,18 @@ const userController = {
     },
 
     // criar um novo usuario:
-    createNewUser: async (req, res) => {
-        const { id, nome, email, senha } = req.body;
+    registerSenai: async (req, res) => {
+        const { id, nome, sobrenome, email, senha } = req.body;
 
         try {
-            const sql = await userController.getByEmail(email);
+            const sql = await clientController.getByEmail(email);
 
             if (sql.length > 0) {
-                res.status(401).json({ msg: "O email já esta cadastrado no Banco de Dados" })
+                res.status(401).json({ msg: "o email ja esta cadastrado na base de dados, insira um email diferente!" })
             }
             else {
-                await userController.registerUser(id, nome, email, senha);
-                res.status(201).json({ msg: "Usuário cadastrado com sucesso" });
+                await clientController.registerSenai(id, nome, sobrenome, email, senha);
+                res.status(201).json({ msg: "usuario cadastrado com sucesso" });
             }
         }
         catch (error) {
@@ -60,7 +60,7 @@ const userController = {
         const { email, senha } = req.body;
 
         try {
-            const sql = await userController.validateLogin(email, senha);
+            const sql = await clientController.validateLogin(email, senha);
 
             if (sql.length > 0) {
                 res.status(200).json({ msg: "email e senha validados com sucesso!" })

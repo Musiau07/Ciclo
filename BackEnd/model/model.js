@@ -8,23 +8,22 @@ const userModel = {
     },
 
     getByEmail: async (email) => {
-        const [result] = await connection.query("SELECT * FROM usuario WHERE email =?", [email])
+        const [result] = await connection.query("SELECT * FROM cadastro_login WHERE email=?", [email])
             .catch(erro => console.log(erro));
         return result
     },
 
-    registerUser: async (id, nome, email, senha) => {
-        const [result] = await connection.query("INSERT INTO usuario VALUES(?,?,?,?)", [id, nome, email, senha])
-        return result
-    },
-    // model para login:
     validateLogin: async (email, senha) => {
         const [result] = await connection.query("SELECT * FROM cadastro_login WHERE email=? AND senha=?", [email, senha])
             .catch(erro => console.log(erro));
         return result
     },
 
+    registerSenai: async (id, nome, sobrenome, email, senha) => {
+        const [result] = await connection.query('INSERT INTO cadastro_login VALUES(?,?,?,?,?)', [id, nome, sobrenome, email, senha])
+            .catch(erro => console.log(erro));
+        return result
+    },
 };
-
 
 module.exports = userModel;

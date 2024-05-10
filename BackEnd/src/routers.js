@@ -1,6 +1,5 @@
 const express = require('express');
 const userController = require("../controller/controller");
-const user = require("../config/db");
 const router = express.Router();
 
 router.get('/', userController.getRoot); //rota raiz

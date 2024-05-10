@@ -2,10 +2,12 @@
  import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./src/telas/Home/Home";
-import Cadastro from "./src/telas/Cadastro/Cadastro";
+//import Home from "./src/telas/Home/Home";
+import Cadastro from "./src/components/Cadastro";
+import Login from "./src/components/Login";
+import Cursos from "./src/components/Cursos";
 //import Cadastro from "./src/telas/Cadastro/Cadastro";
-import Home from "./src/telas/Home/Home";
+//import Home from "./src/telas/Home/Home";
 
 const Stack = createStackNavigator();
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, Button, Image, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
+import { Text, TextInput, Button, Image, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
 import styles from './Styles';
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
       }
 
       //enviar os dados para a api
-      const response = await axios.post('http://10.0.2.2:8085/api/validate', data);
+      const response = await axios.post('http://10.0.2.2:8085/api/validation', data);
       Alert.alert('Login realizado com sucesso');
       navigation.navigate('Menu')
 
@@ -40,7 +40,6 @@ const LoginScreen = ({ navigation }) => {
     catch (error) {
       if (error.response && error.response.status === 401) {
         Alert.alert('Email ou senha incorretos ')
-
 
       }
 
@@ -69,8 +68,10 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
       />
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} >Login</Text>
+        <Text style={styles.buttonText} onPress={handleLoginScreen}>Login</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Menu')}></TouchableOpacity>
       </TouchableOpacity>
+      <Text style={styles.textoLink} color="#f69499" onPress={() => navigation.push('Cadastro')}>Ainda não possui um Cadastro?</Text>
     </SafeAreaView>
   );
 };

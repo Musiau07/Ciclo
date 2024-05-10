@@ -1,30 +1,36 @@
 const connection = require("../config/db");
 
-const userModel = {
+const useModel = {
     getAllUsers: async () => {
         const [result] = await connection.query("SELECT * FROM usuario")
-            .catch(erro => console.log(erro));
+            .catch(err => console.log(err));
         return result
     },
-
-    getByEmail: async (email) => {
-        const [result] = await connection.query("SELECT * FROM usuario WHERE email =?", [email])
-            .catch(erro => console.log(erro));
+    getByID: async (id) => {
+        const [result] = await connection.query("SELECT * FROM usuario WHERE id =?", [id])
+            .catch(err => console.log(err));
         return result
     },
-
     registerUser: async (id, nome, email, senha) => {
-        const [result] = await connection.query("INSERT INTO usuario VALUES(?,?,?,?)", [id, nome, email, senha])
+        const [result] = await connection.query("INSERT INTO usuario values(?,?,?,?)", [id, nome, email, senha])
+            .catch(err => console.log(erro));
         return result
     },
-    // model para login:
-    validateLogin: async (email, senha) => {
-        const [result] = await connection.query("SELECT * FROM cadastro_login WHERE email=? AND senha=?", [email, senha])
+    getByEmail: async (email) => {
+        const [result] = await connection.query("SELECT * FROM usuario WHERE email=?", [email])
             .catch(erro => console.log(erro));
-        return result
+        return result;
     },
-
+    validadeLogin: async (email, senha) => {
+        const [result] = await connection.query("SELECT * FROM usuario WHERE email=? AND senha=?", [email, senha])
+            .catch(erro => console.log(erro));
+        return result;
+    },
+    registernNewClient: async (id, nome, email, senha) => {
+        const [result] = await connection.query("INSERT INTO usuario values(?,?,?,?)", [id, nome,  email, senha])
+            .catch(erro => console.log(erro));
+        return result;
+    }
 };
 
-
-module.exports = userModel;
+module.exports = useModel;

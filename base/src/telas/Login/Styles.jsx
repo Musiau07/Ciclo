@@ -42,6 +42,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
   },
+  textoLink: {
+    textAlign: 'center',
+    paddingVertical: 10,
+    fontSize: 15,
+    color: '#efa9ac',
+    fontWeight: 'bold',
+  }
 });
 
 export default styles;

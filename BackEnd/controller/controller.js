@@ -1,27 +1,32 @@
+<<<<<<< HEAD
 const { json } = require("express");
 const userController = require("../model/model");
 const Controller = {
+=======
+const clientController = require("../model/model");
+>>>>>>> 233f09f4d3e01a90a75793b592cc9140645c26d3
 
-    // route root
+const useController = {
+    //Route root
     getRoot: async (req, res) => {
-        res.status(200).json({ msg: "the API is running!!!" })
+        res.status(200).json({ msg: "The API is running!!!" })
     },
 
-    // controller para listar todos os usuarios do banco:
+    //Controller para listar todos os usuarios de banco
     listAllUsers: async (req, res) => {
         try {
-            const user = await userController.getAllUsers();
-            res.status(200).json(user);
+            const clients = await clientController.getAllUsers();
+            res.status(200).json(clients);
         }
-        catch (error) {
-            res.status(500).json({ error: "Erro ao obter a lista de usuários" })
+        catch (erro) {
+            res.status(500).json({ error: "Erro ao obter a lista de usuarios" })
         }
     },
 
-    // listar usuarios por email:
+    //Controller list by id
     listByID: async (req, res) => {
         try {
-            const sql = await userController.getById(req.params.email);
+            const sql = await clientController.getByID(req.params.id);
 
             if (sql.length > 0) {
                 res.status(200).json(sql)
@@ -35,6 +40,7 @@ const Controller = {
         }
     },
 
+<<<<<<< HEAD
     // criar um novo usuario:
     registerSenai: async (req, res) => {
         const { id, nome, sobrenome, email, senha } = req.body;
@@ -48,25 +54,65 @@ const Controller = {
             else {
                 await clientController.registerSenai(id, nome, sobrenome, email, senha);
                 res.status(201).json({ msg: "usuario cadastrado com sucesso" });
+=======
+    //Criar usuario
+    createNewUser: async (req, res) => {
+        const { id, nome, email, senha } = req.body;
+
+        try {
+            const sql = await clientController.getByID(id)
+
+            if (sql.length > 0) {
+                res.status(401).json({ msg: "O ID ja esta cadastrado no DB" })
+            }
+            else {
+                await clientController.registerUser(id, nome, email, senha);
+                res.status(201).json({ msg: "Usuario cadastrado com sucesso" })
+>>>>>>> 233f09f4d3e01a90a75793b592cc9140645c26d3
             }
         }
         catch (error) {
+            return error
+        }
+    },
+
+    registerNewClient: async (req, res) => {
+        const { id, nome, email, senha } = req.body;
+
+        try {
+            const sql = await clientController.getByEmail(email);
+
+            if (sql.length > 0) {
+                res.status(401).json({ msg: "O email já está Cadastrado, Insira um email valido" })
+            }
+            else {
+                await clientController.registerSenai(id, nome, email, senha);
+                res.status(201).json({ msg: "Usuário cadastrado com sucesso" });
+            }
+        }
+        catch (erro) {
             console.log(error);
-            res.status(500).json({ msg: "ocorreu um erro durante o registro do usuario" })
+            res.status(500).json({ msg: "Ocorreu um erro durante o registro de usuários" });
         }
     },
 
     login: async (req, res) => {
-        const { email, senha } = req.body;
+        let { email, senha } = req.body;
+
+        senha = senha.toString();
 
         try {
+<<<<<<< HEAD
             const sql = await clientController.validateLogin(email, senha);
+=======
+            const sql = await clientController.validadeLogin(email, senha);
+>>>>>>> 233f09f4d3e01a90a75793b592cc9140645c26d3
 
             if (sql.length > 0) {
-                res.status(200).json({ msg: "email e senha validados com sucesso!" })
+                res.status(200).json({ msg: "Email e senha validados com sucesso!!!" });
             }
             else {
-                res.status(401).json({ msg: "email ou senha incorretos" });
+                res.status(401).json({ msg: "Email ou senha incorretos" });
             }
         }
         catch (error) {
@@ -77,4 +123,4 @@ const Controller = {
     }
 };
 
-module.exports = userController;
+module.exports = useController;

@@ -4,9 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 //import Home from "./src/telas/Home/Home";
 
- import LoginScreen from "./src/telas/Login/LoginScreen";
+  import LoginScreen from "./src/telas/Login/LoginScreen";
  import Cadastro from "./src/telas/Cadastro/Cadastro"
-import Home from "./src/telas/Home/Home";
+ import Home from "./src/telas/Home/Home";
 
 // import Menu from "./src/telas/Menu/Menu";
 // import Calendario from "./src/telas/Calendario/Calendario";
@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 
 export default function App(){
     return(
-    //    <Lembrete/>
+       //<Lembrete/>
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={Home}/>

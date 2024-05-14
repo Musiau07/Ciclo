@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
             <View style={styles.buttonContainer}>
                 <Button
                     title="Login"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('LoginScreen')}
                     color='#FFB6C1'
                 />
             </View>

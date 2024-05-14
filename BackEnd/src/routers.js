@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-const express = require('express');
-const userController = require("../controller/controller");
-=======
+
+
 const express = require("express");
 const clientController = require("../controller/controller");
->>>>>>> 233f09f4d3e01a90a75793b592cc9140645c26d3
-const router = express.Router();
+
 
 router.get("/", clientController.getRoot); //Rota raiz
 router.get("/api/read", clientController.listAllUsers); //Listar tds os usuarios

@@ -31,7 +31,7 @@ const Cadastro = ({ navigation }) => {
       navigation.navigate('LoginScreen');
     } catch (error) {
       if (error.response.status === 401) {
-        setMensagem('O ID' + formData.id + 'já existe na base de dados')
+        setMensagem('O ID ' + formData.id + 'já existe no banco de dados')
       }
       else {
         console.log(error);
@@ -54,6 +54,7 @@ const Cadastro = ({ navigation }) => {
         style={styles.input}
         placeholder="Email"
         onChangeText={(text) => handleInputChange('email', text)}
+        keyboardType="email-address"
         value={formData.email}
       />
       <TextInput

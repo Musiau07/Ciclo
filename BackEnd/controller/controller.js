@@ -1,7 +1,6 @@
 const { json } = require("express");
 const clientController = require("../model/model");
 
-
 const userController = {
     //Route root
     getRoot: async (req, res) => {
@@ -42,10 +41,14 @@ const userController = {
         email = email.toLowerCase();
 
         try {
-            const sql = await clientController.getByID(id)
+            if(!email.includes('@')){
+                return res.status(400).json({msg: "O e-mail fornecido é invalido"})
+            }
+            
+            const sql = await clientController.getByEmail(email)
 
             if (sql.length > 0) {
-                res.status(401).json({ msg: "O ID ja esta cadastrado no DB" })
+                res.status(401).json({ msg: "O email já está cadastrado no DB" })
             }
             else {
                 await clientController.registerUser(id, nome, email, senha);
@@ -55,26 +58,6 @@ const userController = {
         }
         catch (error) {
             return error
-        }
-    },
-
-    registerNewClient: async (req, res) => {
-        const { id, nome, email, senha } = req.body;
-
-        try {
-            const sql = await clientController.getByEmail(email);
-
-            if (sql.length > 0) {
-                res.status(401).json({ msg: "O email já está Cadastrado, Insira um email valido" })
-            }
-            else {
-                await clientController.registerSenai(id, nome, email, senha);
-                res.status(201).json({ msg: "Usuário cadastrado com sucesso" });
-            }
-        }
-        catch (erro) {
-            console.log(error);
-            res.status(500).json({ msg: "Ocorreu um erro durante o registro de usuários" });
         }
     },
 

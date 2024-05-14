@@ -61,6 +61,7 @@ const Cadastro = ({ navigation }) => {
         placeholder="Senha"
         onChangeText={(text) => handleInputChange('senha', text)}
         value={formData.senha}
+        secureTextEntry
       />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>

@@ -31,6 +31,7 @@ const useModel = {
             .catch(erro => console.log(erro));
         return result;
     }
+
 };
 
 module.exports = useModel;

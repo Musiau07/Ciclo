@@ -1,6 +1,8 @@
-const clientController = require("../model/models");
+const { json } = require("express");
+const clientController = require("../model/model");
 
-const useController = {
+
+const userController = {
     //Route root
     getRoot: async (req, res) => {
         res.status(200).json({ msg: "The API is running!!!" })
@@ -33,10 +35,11 @@ const useController = {
             return error
         }
     },
-
     //Criar usuario
     createNewUser: async (req, res) => {
-        const { id, nome, email, endereco, senha } = req.body;
+        let { id, nome, email, senha } = req.body;
+
+        email = email.toLowerCase();
 
         try {
             const sql = await clientController.getByID(id)
@@ -45,8 +48,9 @@ const useController = {
                 res.status(401).json({ msg: "O ID ja esta cadastrado no DB" })
             }
             else {
-                await clientController.registerUser(id, nome, email, endereco, senha);
+                await clientController.registerUser(id, nome, email, senha);
                 res.status(201).json({ msg: "Usuario cadastrado com sucesso" })
+
             }
         }
         catch (error) {
@@ -55,7 +59,7 @@ const useController = {
     },
 
     registerNewClient: async (req, res) => {
-        const { id, nome, sobrenome, email, senha } = req.body;
+        const { id, nome, email, senha } = req.body;
 
         try {
             const sql = await clientController.getByEmail(email);
@@ -64,7 +68,7 @@ const useController = {
                 res.status(401).json({ msg: "O email já está Cadastrado, Insira um email valido" })
             }
             else {
-                await clientController.registerSenai(id, nome, sobrenome, email, senha);
+                await clientController.registerSenai(id, nome, email, senha);
                 res.status(201).json({ msg: "Usuário cadastrado com sucesso" });
             }
         }
@@ -77,10 +81,12 @@ const useController = {
     login: async (req, res) => {
         let { email, senha } = req.body;
 
-        try {
-            const sql = await clientController.validadeLogin(email, senha);
+        senha = senha.toString();
 
-            if (sql.length > 0 && sql[0].email === email.toLowerCase() && sql[0].senha === senha) { // Compara o e-mail sem conversão para minúsculas
+        try {
+            const sql = await clientController.validateLogin(email, senha);
+
+            if (sql.length > 0) {
                 res.status(200).json({ msg: "Email e senha validados com sucesso!!!" });
             }
             else {
@@ -95,4 +101,4 @@ const useController = {
     }
 };
 
-module.exports = useController;
+module.exports = userController;

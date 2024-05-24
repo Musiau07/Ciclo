@@ -48,7 +48,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#efa9ac',
     fontWeight: 'bold',
-  }
+  },
+  resetSenha: {
+    marginTop: 10,
+    color: '#efa9ac',
+    textDecorationLine: 'underline',
+  },
 });
 
 export default styles;

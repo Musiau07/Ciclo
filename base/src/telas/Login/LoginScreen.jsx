@@ -6,6 +6,9 @@ import axios from 'axios';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const handleResetSenha = async () => {
+    navigation.navigate('ResetSenha');
+  }
 
   const handleLoginScreen = async () => {
     try {
@@ -14,7 +17,6 @@ const LoginScreen = ({ navigation }) => {
         Alert.alert('Erro', 'Por favor, preencha todos os campos.');
         return
       }
-
       //objeto para enviar pra api
       const data = {
         email: email,
@@ -72,6 +74,9 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate('Menu')}></TouchableOpacity>
       </TouchableOpacity>
       <Text style={styles.textoLink} color="#f69499" onPress={() => navigation.push('Cadastro')}>Ainda não possui um Cadastro?</Text>
+      <TouchableOpacity onPress={handleResetSenha}>
+        <Text style={styles.resetSenha}>Esqueceu sua senha?</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

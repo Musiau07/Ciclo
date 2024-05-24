@@ -81,7 +81,44 @@ const userController = {
                 res.status(500).json(error);
             }
         }
-    }
+    },
+
+    getByEmailReset: async (req, res) => {
+        let { email } = req.body
+
+        email = email.toLowerCase();
+
+        try {
+            const sql = await clientController.getByEmailStudents(email);
+
+            if (sql.length > 0) {
+                res.status(200).json({ msg: 'sucess' })
+            }
+            else {
+                res.status(401).json({ msg: 'email não cadastrado no bd' });
+            }
+        }
+        catch (error) {
+            if (error) {
+                res.status(500).json(error);
+            }
+        }
+    },
+
+    resetPassword: async (req, res) => {
+        let { email, senha } = req.body
+
+        email = email.toLowerCase();
+
+        try {
+            await clientController.updatePassword(email, senha);
+            res.status(200).json({ msg: 'senha atualizada com sucesso' });
+        }
+        catch (error) {
+            console.log('erro ao redfinir a senha')
+            res.status(500).json({ msg: 'erro no servidor' })
+        }
+    },
 };
 
 module.exports = userController;

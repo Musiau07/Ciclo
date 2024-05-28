@@ -25,7 +25,18 @@ const useModel = {
         return result;
     },
    
+    //email para resetar senha 
+    resetByEmail: async (email) => {
+        const [result] = await connection.query('SELECT * FROM usuario WHERE email=?', [email])
+        return result;
+    },
 
+    //update the password
+    updatePassword: async (email, senha) => {
+        const result = await connection.query('UPDATE usuario SET senha=? where email=?', [senha, email])
+            .catch(erro => console.log(erro));
+        return result;
+    },
 };
 
 module.exports = useModel;

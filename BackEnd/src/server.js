@@ -25,11 +25,10 @@ app.use((req, res, next) => {
     next();
 });
 
-user.query("select 1").then(() => {
-    console.log("connection sucess")
+client.query("select 1").then(() => {
+    console.log("cennection sucess")
     app.listen(8085, function () {
-        console.log("Servidor rodando na URL: http://localhost:8085")
+        console.log("servidor rodando na url:http://localhost:8085")
     });
 })
-.catch(erro => console.log("connection failed \n" + erro));
-
+    .catch(erro => console.log("connection failed\n" + erro));

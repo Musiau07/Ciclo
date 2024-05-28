@@ -1,46 +1,32 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
- container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
- },
-
-logo:{
-  marginBottom: 10,
-},
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#efa1bb',
   },
   logo: {
     width: 250,
     height: 200,
     marginBottom: 70,
   },
-  input: {
-    width: '80%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    marginVertical: 10,
-    padding: 10,
-  },
-  button: {
-    width: '90%',
+  buttonContainer: {
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100,
-    marginVertical: 10,
+
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
+  buttonContainer: {
+    marginTop: 10,
+    borderRadius: 20,
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  button: {
+    borderRadius: 20,
   },
 });
 

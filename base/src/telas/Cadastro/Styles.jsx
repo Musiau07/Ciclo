@@ -20,6 +20,11 @@ const styles = StyleSheet.create({
         color: '#efa9ac',
         fontWeight: 'bold',
     },
+    logo: {
+        width: 150,
+        height: 150,
+        marginBottom: 40,
+    },
     input:{
         height:40,
         borderRadius: 15,

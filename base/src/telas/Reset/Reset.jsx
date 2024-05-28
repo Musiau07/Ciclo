@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput, Text, Alert} from 'react-native';
+import { View, Button, TextInput, Text, Alert, Image } from 'react-native';
 import axios from 'axios';
 import styles from './style';
 
-const ResetSenha = ({ navigation }) => {
+const ReseteSenha = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [novaSenha, setNovaSenha] = useState('');
     const [confirmaSenha, setConfirmaSenha] = useState('');
@@ -45,9 +45,13 @@ const ResetSenha = ({ navigation }) => {
 
     const handleTrocarSenha = async () => {
         try {
+            if (!email || !novaSenha) {
+                Alert.alert("Erro, preencha todos os campos por favor!");
+                return;
+            }
             //verificar se as senhas coincidem
             if (novaSenha !== confirmaSenha) {
-                Alert.alert("as senhas não coincidem");
+                Alert.alert("As senhas não coincidem!");
                 return;
             }
 
@@ -60,7 +64,7 @@ const ResetSenha = ({ navigation }) => {
             const response = await axios.post('http://10.0.2.2:8085/api/resetPassword', data);
 
             if (response.status === 200) {
-                navigation.navigate('LoginScreen');
+                navigation.navigate('Login');
                 Alert.alert("Senha trocada com sucesso");
             }
             else {
@@ -74,37 +78,41 @@ const ResetSenha = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Esqueceu sua senha</Text>
-            <TextInput placeholderTextColor={'black'}
-                style={styles.input}
-                placeholder='Digite sue email'
-                value={email}
-                onChangeText={setEmail}
-            />
-            {!mostrarFormulario && (
-                <Button title='Resetar senha' onPress={handleResetSenha} color={"#f69499"} />
-            )}
-            {mostrarFormulario && (
-                <>
-                    <TextInput placeholderTextColor={'black'}
-                        style={styles.input}
-                        placeholder='Nova Senha'
-                        value={novaSenha}
-                        onChangeText={setNovaSenha}
-                        secureTextEntry
-                    />
-                    <TextInput placeholderTextColor={'black'}
-                        style={styles.input}
-                        placeholder='Confirmar senha'
-                        value={confirmaSenha}
-                        onChangeText={setConfirmaSenha}
-                        secureTextEntry
-                    />
-                    <Button title='Trocar Senha' onPress={handleTrocarSenha} color={"#3cdf32"} />
-                </>
-            )}
+            <Image source={require('../../../res/img/logoEsqueceuSenha.png')} style={styles.logo} />
+
+
+
+                <Text style={styles.title}>Esqueceu sua senha</Text>
+                <TextInput placeholderTextColor={'black'}
+                    style={styles.input}
+                    placeholder='Digite sue email'
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                {!mostrarFormulario && (
+                    <Button title='Resetar senha' onPress={handleResetSenha} color={"#f69499"} />
+                )}
+                {mostrarFormulario && (
+                    <>
+                        <TextInput placeholderTextColor={'black'}
+                            style={styles.input}
+                            placeholder='Nova Senha'
+                            value={novaSenha}
+                            onChangeText={setNovaSenha}
+                            secureTextEntry
+                        />
+                        <TextInput placeholderTextColor={'black'}
+                            style={styles.input}
+                            placeholder='Confirmar senha'
+                            value={confirmaSenha}
+                            onChangeText={setConfirmaSenha}
+                            secureTextEntry
+                        />
+                    <Button title='Trocar Senha' onPress={handleTrocarSenha} color={"#f69499"} />
+                    </>
+                )}
         </View>
     );
 }
 
-export default ResetSenha;
+export default ReseteSenha;

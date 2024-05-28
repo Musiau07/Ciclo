@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     height: 40,
-    backgroundColor: '#FFB6C1',
+    backgroundColor: '#f69499',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
   },
   resetSenha: {
     marginTop: 10,
+    fontSize: 15,
     color: '#efa9ac',
-    textDecorationLine: 'underline',
+    fontWeight: 'bold',
   },
 });
 

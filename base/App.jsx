@@ -1,266 +1,30 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-//  import LoginAP from "./src/components/SesiSenai/LoginAp";
-//  import Boletim from "./src/components/SesiSenai/Boletim";
-//  import Registro from "./src/components/SesiSenai/RegisterAluno";
-import Cadastro from "./src/telas/Cadastro/Cadastro";
-import Lembrete from "./src/telas/Lembrete/Lembrete";
-import Calendario from "./src/telas/Calendario/Calendario";
-import LoginScreen from "./src/telas/Login/LoginScreen";
 import Home from "./src/telas/Home/Home";
-import Menu from "./src/telas/Menu/Menu";
-import Autocuidado from "./src/telas/Autocuidado/Autocuidado";
 
-const Stack = createStackNavigator();
+  import LoginScreen from "./src/telas/Login/LoginScreen";
+ import Cadastro from "./src/telas/Cadastro/Cadastro"
+ import Home from "./src/telas/Home/Home";
 
-export default function App() {
-    return (
-           <Menu/>
-           
+// import Menu from "./src/telas/Menu/Menu";
+// import Calendario from "./src/telas/Calendario/Calendario";
+// import Autocuidado from "./src/telas/Autocuidado/Autocuidado"
+//import Lembrete from "./src/telas/Lembrete/Lembrete";
 
-
-        // <NavigationContainer>
-        //     <Stack.Navigator initialRouteName="LoginAP">
-        //         <Stack.Screen name="LoginAP" component={LoginAP}/>
-        //         <Stack.Screen name="Boletim" component={Boletim}/>
-        //         <Stack.Screen name="Registro" component={Registro}/>
-        //     </Stack.Navigator>
-        // </NavigationContainer>
+export default function App(){
+    return(
+       //<Lembrete/>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+               <Stack.Screen name="Home" component={Home} />
+               <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+               <Stack.Screen name="Cadastro" component={Cadastro}/>
+         </Stack.Navigator>
+        </NavigationContainer>
 
     )
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

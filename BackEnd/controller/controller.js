@@ -89,10 +89,10 @@ const userController = {
         email = email.toLowerCase();
 
         try {
-            const sql = await clientController.getByEmailStudents(email);
+            const sql = await clientController.getByEmail(email);
 
             if (sql.length > 0) {
-                res.status(200).json({ msg: 'sucess' })
+                res.status(200).json({ msg: 'sucesso' })
             }
             else {
                 res.status(401).json({ msg: 'email não cadastrado no bd' });
@@ -115,7 +115,7 @@ const userController = {
             res.status(200).json({ msg: 'senha atualizada com sucesso' });
         }
         catch (error) {
-            console.log('erro ao redfinir a senha')
+            console.log('erro ao redefinir a senha')
             res.status(500).json({ msg: 'erro no servidor' })
         }
     },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput, Text, Alert, Image, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, Button, TextInput, Text, Alert} from 'react-native';
 import axios from 'axios';
 import styles from './style';
 
@@ -28,17 +28,17 @@ const ResetSenha = ({ navigation }) => {
                 setMostrarFormulario(true);
             }
             else if (response.status === 404) {
-                Alert.alert('email não encontrado. verifique o email digitado')
+                Alert.alert('Email não encontrado. Verifique o email digitado')
             }
         }
         catch (error) {
             if (error.response && error.response.status === 401) {
                 console.log(error)
-                Alert.alert('email não encontrado. Verifique o email digitado');
+                Alert.alert('Email não encontrado. Verifique o email digitado');
             }
             else {
                 console.log(error)
-                Alert.alert('erro ao resetar a senha:', error);
+                Alert.alert('Erro ao resetar a senha:', error);
             }
         }
     };
@@ -61,39 +61,39 @@ const ResetSenha = ({ navigation }) => {
 
             if (response.status === 200) {
                 navigation.navigate('LoginScreen');
-                Alert.alert("senha trocada com sucesso");
+                Alert.alert("Senha trocada com sucesso");
             }
             else {
-                Alert.alert('erro ao trocar a senha');
+                Alert.alert('Erro ao trocar a senha');
             }
         }
         catch (error) {
-            Alert.alert('erro ao trocar a senha', error);
+            Alert.alert('Erro ao trocar a senha', error);
         }
     };
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Esqueceu sua senha</Text>
-            <TextInput placeholderTextColor={'white'}
+            <TextInput placeholderTextColor={'black'}
                 style={styles.input}
                 placeholder='Digite sue email'
                 value={email}
                 onChangeText={setEmail}
             />
             {!mostrarFormulario && (
-                <Button title='Resetar senha' onPress={handleResetSenha} color={"#3cdf32"} />
+                <Button title='Resetar senha' onPress={handleResetSenha} color={"#f69499"} />
             )}
             {mostrarFormulario && (
                 <>
-                    <TextInput placeholderTextColor={'white'}
+                    <TextInput placeholderTextColor={'black'}
                         style={styles.input}
                         placeholder='Nova Senha'
                         value={novaSenha}
                         onChangeText={setNovaSenha}
                         secureTextEntry
                     />
-                    <TextInput placeholderTextColor={'white'}
+                    <TextInput placeholderTextColor={'black'}
                         style={styles.input}
                         placeholder='Confirmar senha'
                         value={confirmaSenha}

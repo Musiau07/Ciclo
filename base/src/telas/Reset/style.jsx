@@ -5,12 +5,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 20,
+        backgroundColor:'white',
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
-        color:"#efa9ac"
+        color:"#f69499"
     },
     input: {
         width: '100%',

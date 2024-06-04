@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Text, TextInput, Button, Image, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
+import { Text, TextInput, Button, Image, View, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
 import styles from './Styles';
 import axios from 'axios';
 
-const LoginScreen = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const handleResetSenha = async () => {
-    navigation.navigate('ResetSenha');
+    navigation.navigate('ReseteSenha');
   }
 
-  const handleLoginScreen = async () => {
+  const handleLogin = async () => {
     try {
       //verificar se os campos foram preenchidos
       if (!email || !senha) {
@@ -69,16 +69,20 @@ const LoginScreen = ({ navigation }) => {
         value={senha}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} onPress={handleLoginScreen}>Login</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Menu')}></TouchableOpacity>
-      </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+          <Button title="                                        Login                                        " onPress={handleLogin} styleradius={"sm"} type="solid" color="#f69499" />
+          </View> 
+        </View>
+
       <Text style={styles.textoLink} color="#f69499" onPress={() => navigation.push('Cadastro')}>Ainda não possui um Cadastro?</Text>
+
       <TouchableOpacity onPress={handleResetSenha}>
         <Text style={styles.resetSenha}>Esqueceu sua senha?</Text>
       </TouchableOpacity>
+
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+export default Login;

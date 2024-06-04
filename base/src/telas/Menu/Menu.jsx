@@ -1,62 +1,63 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import styles from './Styles';
-import img from './../../../res/img/background2.jpg';
 import { Button } from '@rneui/base';
 
+const Menu = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <View style={styles.content}>
+                <Image source={require('../../../res/img/logo3.png')} style={styles.logo} />
+                <TouchableOpacity style={styles.button}>
+                    <View style={[styles.buttonContainer]}>
+                        <Button
+                            title="          Autocuidado          "
+                            color='#feeaec'
+                            onPress={() => navigation.navigate('Autocuidado')}
+                            buttonStyle={{ borderRadius: 10 }}
+                            titleStyle={{ color: '#ec407a' }}
+                        />
+                    </View>
+                </TouchableOpacity>
 
+                <TouchableOpacity style={styles.button}>
+                    <View style={[styles.buttonContainer]}>
+                        <Button
+                            title="            Calendario            "
+                            color='#feeaec'
+                            onPress={() => navigation.navigate('Calendario')}
+                            buttonStyle={{ borderRadius: 10 }}
+                            titleStyle={{ color: '#ec407a' }}
+                        />
+                    </View>
+                </TouchableOpacity>
 
-const Menu = ({navigation}) => {
-  return (
-    
-    <ImageBackground source={img} style={styles.container}>
-      <View style={styles.content}>
-        <Image source={require('../../../res/img/logo3.png')} style={styles.logo} />
+                <TouchableOpacity style={styles.button}>
+                    <View style={[styles.buttonContainer]}>
+                        <Button
+                            title="             Lembrete             "
+                            color='#feeaec'
+                            onPress={() => navigation.navigate('Lembrete')}
+                            buttonStyle={{borderRadius: 10}}
+                            titleStyle={{ color: '#ec407a' }}
 
-          
-          
-
-            <TouchableOpacity style={styles.button}>
-            <View style = {styles.buttonContainer}>
-                <Button
-                    title="        Autocuidado    "
-                    color='#FF1493'
-                    onPress={()=> navigation.navigate ('Autocuidado')}
-                />
-            </View>   
-        </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}>
-            <View style = {styles.buttonContainer}>
-                <Button
-                    title="         Calendario      "
-                    color='#FF1493'
-                    onPress={()=> navigation.navigate('Calendario')}
-                />
-            </View>   
-        </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}>
-            <View style = {styles.buttonContainer}>
-                <Button
-                    title="         Lembrete        "
-                    color='#FF1493'
-                    onPress={()=> navigation.navigate('Lembrete')}
-                />
-            </View>   
-        </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-            <View style = {styles.buttonContainer}>
-                <Button
-                    title="         Anotação        "
-                    color='#FF1493'
-                    onPress={()=> navigation.navigate('Anotação')}
-                />
-            </View>   
-        </TouchableOpacity>
-      </View>
-    </ImageBackground>
-  );
+                        />
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                    <View style={[styles.buttonContainer]}>
+                        <Button
+                            title="             Anotação             "
+                            color='#feeaec'
+                            onPress={() => navigation.navigate('Anotação')}
+                            buttonStyle={{ borderRadius: 10 }}
+                            titleStyle={{ color: '#ec407a' }}
+                        />
+                    </View>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
 };
 
 export default Menu;

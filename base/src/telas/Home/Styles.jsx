@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
  },
  content: {
-   backgroundColor: 'rgba(255, 255, 255, 0.8)',
    padding: 20,
    borderRadius: 10,
    width: '80%',
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '80%',
     height: 40,
-    backgroundColor: '#FFB6C1',
+    backgroundColor: '#f69499',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { View, TextInput, Alert } from "react-native";
-import { Button, Text } from '@rneui/themed';
-import axios from 'axios'; //Axios é utilizado para comunicar com a API (request)
+import { View, TextInput, Alert, Image, Button, Text } from "react-native";
+import axios from 'axios'; 
 import styles from './Styles'
 
 const Cadastro = ({ navigation }) => {
@@ -28,7 +27,7 @@ const Cadastro = ({ navigation }) => {
     try {
       await axios.post('http://10.0.2.2:8085/api/create', formData);
       Alert.alert('Cadastro realizado com sucesso');
-      navigation.navigate('LoginScreen');
+      navigation.navigate('Login');
     } catch (error) {
       if (error.response.status === 401) {
         setMensagem('O ID ' + formData.id + 'já existe no banco de dados')
@@ -42,7 +41,7 @@ const Cadastro = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastrar</Text>
+      <Image source={require('../../../res/img/logo-removebg.png')} style={styles.logo} />
 
       <TextInput
         style={styles.input}
@@ -69,7 +68,7 @@ const Cadastro = ({ navigation }) => {
           <Button title="Cadastrar" styleradius={"sm"} type="solid" color="#f69499" onPress={handleCadastrar} />
         </View>
       </View>
-      <Text style={styles.textoLink} color="#f69499" onPress={() => navigation.push('LoginScreen')}>Já possui um Cadastro? Faça o Login</Text>
+      <Text style={styles.textoLink} color="#f69499" onPress={() => navigation.push('Login')}>Já possui um Cadastro? Faça o Login</Text>
       {mensagem ? <Text style={styles.mensagem}>{mensagem}</Text> : null}
 
     </View>
